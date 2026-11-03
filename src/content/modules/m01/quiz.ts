@@ -1,0 +1,87 @@
+import type { Question } from '../../types';
+
+export const quiz: Question[] = [
+  {
+    id: 'm01-q1', kind: 'mcq',
+    prompt: 'What is the main purpose of a version control system?',
+    options: ['To compile code faster', 'To record changes to files over time so you can review, compare and restore versions', 'To host websites', 'To test code automatically'],
+    correct: 1,
+    explanation: 'Version control records the history of changes: who, what, when and why. It lets you restore and compare versions.',
+  },
+  {
+    id: 'm01-q2', kind: 'mcq',
+    prompt: 'Which statement about Git and GitHub is correct?',
+    options: ['Git is a website; GitHub is a command-line tool', 'Git and GitHub are two names for the same product', 'Git is a version control tool that runs locally; GitHub hosts Git repositories online and adds collaboration features', 'GitHub is required to make commits'],
+    correct: 2,
+    explanation: 'Git runs on your machine and works offline. GitHub is a hosting service built around Git.',
+  },
+  {
+    id: 'm01-q3', kind: 'mcq',
+    prompt: 'What does GitLab call the feature that GitHub calls a "pull request"?',
+    options: ['Push request', 'Merge request', 'Change list', 'Patch set'],
+    correct: 1,
+    explanation: 'GitLab uses "merge request" (MR). Bitbucket, like GitHub, uses "pull request".',
+  },
+  {
+    id: 'm01-q4', kind: 'scenario',
+    prompt: 'The central SVN server at your old company crashed and the latest backup was a week old. Why would the same crash be far less damaging with Git?',
+    options: ['Git servers never crash', 'Every Git clone contains the full history, so any developer\'s copy can restore the server', 'Git saves backups to the cloud automatically', 'Git does not use servers'],
+    correct: 1,
+    explanation: 'Git is distributed: each clone is a complete copy of the repository and its history.',
+  },
+  {
+    id: 'm01-q5', kind: 'mcq',
+    prompt: 'How does Git store each commit?',
+    options: ['As a list of line differences from the previous commit', 'As a snapshot of all tracked files, reusing unchanged files', 'As a zip of the whole folder', 'Only the files you name in the commit message'],
+    correct: 1,
+    explanation: 'Git stores snapshots. Unchanged files are not duplicated; the new tree simply points to the existing blob.',
+  },
+  {
+    id: 'm01-q6', kind: 'mcq',
+    prompt: 'Which Git object stores the contents of a single file?',
+    options: ['Tree', 'Commit', 'Blob', 'Tag'],
+    correct: 2,
+    explanation: 'A blob holds file contents only. Trees hold names and point to blobs; commits point to a tree.',
+  },
+  {
+    id: 'm01-q7', kind: 'troubleshooting',
+    prompt: 'You edited `app.js` and `README.md`, then ran `git add app.js` and `git commit -m "Fix crash"`. A reviewer says your README change is missing from the commit. Why?',
+    options: ['Git ignores README files', 'Only staged changes are committed; README.md was never added to the staging area', 'The commit message was too short', 'README.md must be committed with a separate branch'],
+    correct: 1,
+    explanation: 'A commit records exactly what is in the staging area. Run `git add README.md` and commit again.',
+  },
+  {
+    id: 'm01-q8', kind: 'mcq',
+    prompt: 'In `git status`, which heading lists changes that WILL be included in the next commit?',
+    options: ['Untracked files', 'Changes not staged for commit', 'Changes to be committed', 'Your branch is up to date'],
+    correct: 2,
+    explanation: '"Changes to be committed" is the staging area.',
+  },
+  {
+    id: 'm01-q9', kind: 'command',
+    prompt: 'Type the expression that refers to the parent of the current commit (one commit before HEAD).',
+    answers: ['HEAD~1', 'HEAD~', 'HEAD^', 'HEAD^1'],
+    explanation: '`HEAD~1`, `HEAD~` and `HEAD^` all mean the first parent of HEAD.',
+  },
+  {
+    id: 'm01-q10', kind: 'mcq',
+    prompt: 'The file `.git/HEAD` contains `ref: refs/heads/main`. What does this mean?',
+    options: ['HEAD is detached', 'You are on branch main', 'The repository has only one commit', 'main has been pushed to GitHub'],
+    correct: 1,
+    explanation: 'HEAD is pointing at the branch `main`; `main` in turn points at its latest commit.',
+  },
+  {
+    id: 'm01-q11', kind: 'scenario',
+    prompt: 'A QA engineer wants to know exactly which change between yesterday\'s passing build and today\'s failing build broke the login page. Which version control capability helps most?',
+    options: ['Encryption of the repository', 'Detailed commit history showing every change, its author and its message', 'Faster cloning', 'Branch protection'],
+    correct: 1,
+    explanation: 'Commit history lets you list and inspect every change between two builds and find the one responsible.',
+  },
+  {
+    id: 'm01-q12', kind: 'troubleshooting',
+    prompt: 'A teammate deleted the hidden `.git` folder of a project that was never pushed. What is the result?',
+    options: ['Git recreates it on the next commit', 'All commits and branches on that machine are lost; only the current files remain', 'Only the staging area is lost', 'Nothing, because history is stored in each file'],
+    correct: 1,
+    explanation: 'The `.git` folder is the repository. Without a remote copy, the history cannot be recovered.',
+  },
+];

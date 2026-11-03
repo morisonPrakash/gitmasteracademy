@@ -1,0 +1,42 @@
+import type { Source } from './types';
+
+// Shared official references, so URLs are consistent across lessons.
+export const SRC = {
+  aboutVcs: { title: 'Pro Git: 1.1 About Version Control', url: 'https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control' },
+  whatIsGit: { title: 'Pro Git: 1.3 What is Git?', url: 'https://git-scm.com/book/en/v2/Getting-Started-What-is-Git%3F' },
+  history: { title: 'Pro Git: 1.2 A Short History of Git', url: 'https://git-scm.com/book/en/v2/Getting-Started-A-Short-History-of-Git' },
+  installing: { title: 'Pro Git: 1.5 Installing Git', url: 'https://git-scm.com/book/en/v2/Getting-Started-Installing-Git' },
+  firstSetup: { title: 'Pro Git: 1.6 First-Time Git Setup', url: 'https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup' },
+  gettingRepo: { title: 'Pro Git: 2.1 Getting a Git Repository', url: 'https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository' },
+  recording: { title: 'Pro Git: 2.2 Recording Changes to the Repository', url: 'https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository' },
+  viewingHistory: { title: 'Pro Git: 2.3 Viewing the Commit History', url: 'https://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History' },
+  undoing: { title: 'Pro Git: 2.4 Undoing Things', url: 'https://git-scm.com/book/en/v2/Git-Basics-Undoing-Things' },
+  remotes: { title: 'Pro Git: 2.5 Working with Remotes', url: 'https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes' },
+  tagging: { title: 'Pro Git: 2.6 Tagging', url: 'https://git-scm.com/book/en/v2/Git-Basics-Tagging' },
+  branchesNutshell: { title: 'Pro Git: 3.1 Branches in a Nutshell', url: 'https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell' },
+  branchMerge: { title: 'Pro Git: 3.2 Basic Branching and Merging', url: 'https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging' },
+  branchMgmt: { title: 'Pro Git: 3.3 Branch Management', url: 'https://git-scm.com/book/en/v2/Git-Branching-Branch-Management' },
+  branchWorkflows: { title: 'Pro Git: 3.4 Branching Workflows', url: 'https://git-scm.com/book/en/v2/Git-Branching-Branching-Workflows' },
+  remoteBranches: { title: 'Pro Git: 3.5 Remote Branches', url: 'https://git-scm.com/book/en/v2/Git-Branching-Remote-Branches' },
+  rebasing: { title: 'Pro Git: 3.6 Rebasing', url: 'https://git-scm.com/book/en/v2/Git-Branching-Rebasing' },
+  internals: { title: 'Pro Git: 10.2 Git Objects', url: 'https://git-scm.com/book/en/v2/Git-Internals-Git-Objects' },
+  refs: { title: 'Pro Git: 10.3 Git References', url: 'https://git-scm.com/book/en/v2/Git-Internals-Git-References' },
+  resetDemystified: { title: 'Pro Git: 7.7 Reset Demystified', url: 'https://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified' },
+  rewriting: { title: 'Pro Git: 7.6 Rewriting History', url: 'https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History' },
+  stashing: { title: 'Pro Git: 7.3 Stashing and Cleaning', url: 'https://git-scm.com/book/en/v2/Git-Tools-Stashing-and-Cleaning' },
+  debugging: { title: 'Pro Git: 7.10 Debugging with Git', url: 'https://git-scm.com/book/en/v2/Git-Tools-Debugging-with-Git' },
+  submodules: { title: 'Pro Git: 7.11 Submodules', url: 'https://git-scm.com/book/en/v2/Git-Tools-Submodules' },
+  advancedMerging: { title: 'Pro Git: 7.8 Advanced Merging', url: 'https://git-scm.com/book/en/v2/Git-Tools-Advanced-Merging' },
+  distributedWorkflows: { title: 'Pro Git: 5.1 Distributed Workflows', url: 'https://git-scm.com/book/en/v2/Distributed-Git-Distributed-Workflows' },
+  vscodeGit: { title: 'VS Code: Source Control with Git', url: 'https://code.visualstudio.com/docs/sourcecontrol/overview' },
+  gitDownload: { title: 'Git downloads', url: 'https://git-scm.com/downloads' },
+  ghAbout: { title: 'GitHub Docs: About GitHub and Git', url: 'https://docs.github.com/en/get-started/start-your-journey/about-github-and-git' },
+  ghRepos: { title: 'GitHub Docs: About repositories', url: 'https://docs.github.com/en/repositories/creating-and-managing-repositories/about-repositories' },
+  ghPRs: { title: 'GitHub Docs: About pull requests', url: 'https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests' },
+  ghActions: { title: 'GitHub Docs: Understanding GitHub Actions', url: 'https://docs.github.com/en/actions/about-github-actions/understanding-github-actions' },
+  ghFlow: { title: 'GitHub Docs: GitHub flow', url: 'https://docs.github.com/en/get-started/using-github/github-flow' },
+  gitlab: { title: 'GitLab Docs: Merge requests', url: 'https://docs.gitlab.com/user/project/merge_requests/' },
+  bitbucket: { title: 'Bitbucket Cloud: Pull requests', url: 'https://support.atlassian.com/bitbucket-cloud/docs/use-pull-requests-for-code-review/' },
+} satisfies Record<string, Source>;
+
+export const doc = (cmd: string): Source => ({ title: `git-scm.com: git ${cmd} reference`, url: `https://git-scm.com/docs/git-${cmd}` });

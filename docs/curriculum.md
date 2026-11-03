@@ -1,6 +1,6 @@
 # Curriculum
 
-14 modules · 143 lessons · 5 levels. The structure is defined in code in `src/content/catalog.ts`; this document describes what each module teaches and how each lesson is built.
+14 modules · 140 lessons · 5 levels. The structure is defined in code in `src/content/catalog.ts`; this document describes what each module teaches and how each lesson is built.
 
 ## Lesson standard
 Every lesson contains:
