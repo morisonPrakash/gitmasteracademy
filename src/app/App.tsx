@@ -11,6 +11,8 @@ const LessonPage = lazy(() => import('@/features/lesson/LessonPage'));
 const Bookmarks = lazy(() => import('@/features/bookmarks/Bookmarks'));
 const TerminalPage = lazy(() => import('@/features/terminal/TerminalPage'));
 const VisualizerPage = lazy(() => import('@/features/visualizer/VisualizerPage'));
+const QuizList = lazy(() => import('@/features/quiz/QuizList'));
+const QuizRunner = lazy(() => import('@/features/quiz/QuizRunner'));
 
 export default function App() {
   return (
@@ -25,6 +27,8 @@ export default function App() {
           <Route path="bookmarks" element={<Bookmarks />} />
           <Route path="terminal" element={<TerminalPage />} />
           <Route path="visualizer" element={<VisualizerPage />} />
+          <Route path="quizzes" element={<QuizList />} />
+          <Route path="quizzes/:quizId" element={<QuizRunner />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

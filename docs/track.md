@@ -10,7 +10,7 @@ Status key: ⬜ not started · 🟨 in progress · ✅ done and verified
 | 4 | Modules 6, 7, 12, 13 content | ✅ | 34 lessons, 48 quiz questions; integrity tests + browser check |
 | 5 | Modules 4, 5, 8, 9, 10, 11, 14 content | ✅ | 73 lessons, 84 quiz questions; integrity tests incl. annotation line checks |
 | 6 | Git simulation engine, terminal, visualizer | ✅ | 47 engine tests (every sim exercise answer + every guided scene replayed); browser check desktop + 375px, no console errors |
-| 7 | Exercises, quizzes, final exam, progress | ⬜ | |
+| 7 | Exercises, quizzes, final exam, progress | ✅ | progress + quiz unit tests; browser: answer feedback, results, mistake review, retake, history |
 | 8 | Projects, cheat sheet, glossary, resources | ⬜ | |
 | 9 | Full QA pass and fixes | ⬜ | |
 | 10 | GitHub Pages deployment, live verification | ⬜ | |
