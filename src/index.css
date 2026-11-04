@@ -113,7 +113,7 @@ body {
 }
 
 /* Minimal syntax colours used by the CodeBlock tokenizer */
-.tok-comment { color: #6e7781; font-style: italic; }
+.tok-comment { color: #57606a; font-style: italic; } /* ≥ 4.5:1 on the light code background */
 .tok-string { color: #0a3069; }
 .tok-keyword { color: #cf222e; }
 .tok-flag { color: #8250df; }

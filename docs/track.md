@@ -12,7 +12,7 @@ Status key: ⬜ not started · 🟨 in progress · ✅ done and verified
 | 6 | Git simulation engine, terminal, visualizer | ✅ | 47 engine tests (every sim exercise answer + every guided scene replayed); browser check desktop + 375px, no console errors |
 | 7 | Exercises, quizzes, final exam, progress | ✅ | progress + quiz unit tests; browser: answer feedback, results, mistake review, retake, history |
 | 8 | Projects, cheat sheet, glossary, resources | ✅ | 4 projects, 128 cheat-sheet commands, 100 glossary terms; reference tests + browser check |
-| 9 | Full QA pass and fixes | ⬜ | |
+| 9 | Full QA pass and fixes | ✅ | 109 unit + 39 e2e tests green; see docs/qa-checklist.md |
 | 10 | GitHub Pages deployment, live verification | ⬜ | |
 
 ## Log

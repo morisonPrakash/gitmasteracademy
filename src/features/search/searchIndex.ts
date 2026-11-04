@@ -123,15 +123,17 @@ export function search(docs: SearchDoc[], query: string, limit = 20): SearchHit[
   for (const doc of docs) {
     const title = doc.title.toLowerCase();
     if (!terms.every((t) => doc.body.includes(t) || title.includes(t))) continue;
+    // Lessons should outrank short reference entries (glossary, cheat sheet) with the same name.
+    const w = doc.context === 'Glossary' || doc.context === 'Git Cheat Sheet' ? 0.2 : 1;
     let score = 0;
-    if (title === q) score += 100;
-    if (title.startsWith(q)) score += 40;
-    if (title.includes(q)) score += 30;
+    if (title === q) score += 100 * w;
+    if (title.startsWith(q)) score += 40 * w;
+    if (title.includes(q)) score += 30 * w;
     for (const t of terms) {
-      if (title.includes(t)) score += 10;
+      if (title.includes(t)) score += 10 * w;
       score += Math.min(doc.body.split(t).length - 1, 10);
     }
-    if (doc.kind === 'lesson') score += 4;
+    if (doc.kind === 'lesson') score += 10;
     hits.push({ doc, score, snippet: snippetFor(doc.rawBody, terms[0]) });
   }
   return hits.sort((a, b) => b.score - a.score).slice(0, limit);
