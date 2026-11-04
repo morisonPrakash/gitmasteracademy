@@ -1,0 +1,16 @@
+import type { Question } from '../../types';
+
+export const quiz: Question[] = [
+  { id: 'm10-q1', kind: 'mcq', prompt: 'Which workflow has only one long-lived branch and deploys from it frequently?', options: ['Git Flow', 'GitHub Flow', 'Centralized with release branches', 'Forking'], correct: 1, explanation: 'GitHub Flow: main plus short-lived branches merged via PRs.' },
+  { id: 'm10-q2', kind: 'mcq', prompt: 'In Git Flow, which branch collects finished features for the next release?', options: ['main', 'develop', 'hotfix', 'trunk'], correct: 1, explanation: 'develop is the integration branch.' },
+  { id: 'm10-q3', kind: 'scenario', prompt: 'A Git Flow hotfix is approved. Where must it be merged?', options: ['main only', 'develop only', 'main and develop', 'Nowhere; tag it'], correct: 2, explanation: 'Otherwise the next release regresses.' },
+  { id: 'm10-q4', kind: 'mcq', prompt: 'What makes trunk-based development possible with unfinished features?', options: ['Long-lived branches', 'Feature flags', 'Force pushes', 'Submodules'], correct: 1, explanation: 'Unfinished code ships switched off.' },
+  { id: 'm10-q5', kind: 'mcq', prompt: 'Which branch name follows common conventions for an urgent production fix?', options: ['Hotfix Payment', 'hotfix/SHOP-250-payment-failure', 'fix_payment!!', 'main-fix'], correct: 1, explanation: 'Lowercase prefix, ticket key, hyphenated description.' },
+  { id: 'm10-q6', kind: 'mcq', prompt: 'In Conventional Commits, what does the type `feat` signal?', options: ['A bug fix', 'A new feature (minor version bump)', 'A test change', 'A breaking change'], correct: 1, explanation: 'feat → MINOR, fix → PATCH, `!`/BREAKING CHANGE → MAJOR.' },
+  { id: 'm10-q7', kind: 'mcq', prompt: 'How is a breaking change marked in Conventional Commits?', options: ['WIP:', 'A `!` after the type/scope and/or a BREAKING CHANGE footer', 'All caps', 'A tag'], correct: 1, explanation: 'Both signal a MAJOR bump.' },
+  { id: 'm10-q8', kind: 'scenario', prompt: 'Current version v3.4.2. The release contains only bug fixes. Next version?', options: ['v3.4.3', 'v3.5.0', 'v4.0.0', 'v3.4.2-fix'], correct: 0, explanation: 'Fixes increment PATCH.' },
+  { id: 'm10-q9', kind: 'mcq', prompt: 'Which version sorts lowest?', options: ['2.0.0', '2.0.0-rc.1', '2.0.0-beta.1', '2.0.0-alpha.1'], correct: 3, explanation: 'alpha < beta < rc < release.' },
+  { id: 'm10-q10', kind: 'mcq', prompt: 'Which commit subject follows the classic best practice?', options: ['fixed bugs.', 'Add retry to payment client', 'Changes', 'Updated some files in src'], correct: 1, explanation: 'Imperative, specific, short, no full stop.' },
+  { id: 'm10-q11', kind: 'scenario', prompt: 'A SaaS team deploys several times a day with strong CI. Which workflow fits best?', options: ['Git Flow', 'GitHub Flow or trunk-based', 'Centralized without review', 'Monthly release branches only'], correct: 1, explanation: 'Continuous delivery suits a single main branch with short-lived branches.' },
+  { id: 'm10-q12', kind: 'command', prompt: 'Type the command that lists tags sorted with the newest version first.', answers: ['git tag --sort=-v:refname', 'git tag -l --sort=-v:refname', 'git tag --sort=-version:refname'], explanation: '`-v:refname` sorts by version, descending.' },
+];

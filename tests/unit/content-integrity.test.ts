@@ -49,7 +49,16 @@ function checkLesson(lesson: Lesson, where: string) {
   const text = JSON.stringify(lesson);
   expect(PLACEHOLDER.test(text), `${where} contains placeholder text`).toBe(false);
   expect(lesson.blocks.some((b) => b.type === 'heading'), `${where} has a heading`).toBe(true);
-  for (const b of lesson.blocks) expect(blockText(b).length).toBeGreaterThan(10);
+  for (const b of lesson.blocks) {
+    expect(blockText(b).length).toBeGreaterThan(10);
+    if (b.type === 'annotated') {
+      // Every annotation must point at a real, non-blank line of the code it explains.
+      const lines = b.code.split('\n');
+      for (const n of b.notes) {
+        expect(lines[n.line - 1]?.trim(), `${where} annotation line ${n.line}`).toBeTruthy();
+      }
+    }
+  }
   lesson.exercises.forEach((ex, i) => checkExercise(ex, `${where} exercise ${i + 1}`));
 }
 
