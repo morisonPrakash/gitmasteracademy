@@ -8,8 +8,8 @@ Status key: ⬜ not started · 🟨 in progress · ✅ done and verified
 | 2 | UI shell, themes, sidebar, search, dashboard, roadmap | ✅ | tsc, vitest, browser check: desktop + 375px mobile, dark/light, Ctrl+K search, drawer, no console errors |
 | 3 | Modules 1–3 content | ✅ | 33 lessons, 36 quiz questions; integrity tests + browser check |
 | 4 | Modules 6, 7, 12, 13 content | ✅ | 34 lessons, 48 quiz questions; integrity tests + browser check |
-| 5 | Modules 4, 5, 8, 9, 10, 11, 14 content | 🟨 | |
-| 6 | Git simulation engine, terminal, visualizer | ⬜ | |
+| 5 | Modules 4, 5, 8, 9, 10, 11, 14 content | ✅ | 73 lessons, 84 quiz questions; integrity tests incl. annotation line checks |
+| 6 | Git simulation engine, terminal, visualizer | 🟨 | |
 | 7 | Exercises, quizzes, final exam, progress | ⬜ | |
 | 8 | Projects, cheat sheet, glossary, resources | ⬜ | |
 | 9 | Full QA pass and fixes | ⬜ | |
@@ -29,6 +29,11 @@ Status key: ⬜ not started · 🟨 in progress · ✅ done and verified
 - 21 named diagrams (SVG commit graphs, flows, custom layouts) that work in both themes.
 - Search: Ctrl+K / "/" dialog, instant title index, full-text index loaded on first open, keyboard navigation.
 - Sidebar deviation from the brief: "Existing Projects" (module 13) is listed under Professional Developer Workflow so every module is reachable.
+
+### Phases 3–5 (content)
+- All 14 modules written: 140 lessons, 168 module quiz questions, 188 exercises.
+- Integrity test now requires every module; it also checks that each line-by-line YAML annotation points at a real line.
+- 11 exercises use the simulator. Phase 6 must provide these scenarios: `one-commit`, `feature-ahead`, `diverged`, `conflict`, `local-ahead`, `remote-ahead`, `remote-feature`, `dirty-feature`, `bad-commit`; and goals: `feature-login-one-commit`, `main-has-feature`, `merge-commit-on-main`, `conflict-resolved`, `pushed-main`, `pulled-latest`, `on-remote-feature`, `stash-roundtrip`, `reverted-bad-commit`. Simulator also needs a `resolve <file> [ours|theirs|both]` helper (used in Module 8).
 
 ## Open items needing the owner
 - Create an **empty public** GitHub repo `morisonPrakash/gitmasteracademy`.

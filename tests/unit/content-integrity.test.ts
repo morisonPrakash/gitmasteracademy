@@ -6,7 +6,8 @@ import type { Block, Exercise, Lesson, Question } from '@/content/types';
 // and once a module's content file exists it must match the catalog exactly.
 
 const PLACEHOLDER = /lorem ipsum|coming soon|\bTBD\b|\bFIXME\b|\[placeholder\]|content goes here|to be written/i;
-const ALL_REQUIRED = process.env.GMA_REQUIRE_ALL === '1';
+// Every module is written, so a missing content file is now always a failure.
+const ALL_REQUIRED = true;
 
 function blockText(b: Block): string {
   return JSON.stringify(b);
