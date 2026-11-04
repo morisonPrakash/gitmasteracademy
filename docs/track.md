@@ -6,7 +6,7 @@ Status key: ⬜ not started · 🟨 in progress · ✅ done and verified
 |---|---|---|---|
 | 1 | Architecture, curriculum, scaffold, content types | ✅ | tsc + vitest pass |
 | 2 | UI shell, themes, sidebar, search, dashboard, roadmap | ✅ | tsc, vitest, browser check: desktop + 375px mobile, dark/light, Ctrl+K search, drawer, no console errors |
-| 3 | Modules 1–3 content | 🟨 | Module 1 done (8 lessons, 12 quiz questions) |
+| 3 | Modules 1–3 content | ✅ | 33 lessons, 36 quiz questions; integrity tests + browser check |
 | 4 | Modules 6, 7, 12, 13 content | ⬜ | |
 | 5 | Modules 4, 5, 8, 9, 10, 11, 14 content | ⬜ | |
 | 6 | Git simulation engine, terminal, visualizer | ⬜ | |
