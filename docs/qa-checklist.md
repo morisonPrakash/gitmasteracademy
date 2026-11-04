@@ -25,7 +25,7 @@ How each item is verified: **U** = Vitest unit/content test, **E** = Playwright 
 | 19 | Accessibility | No serious/critical axe (WCAG 2 A/AA) violations on 6 key pages in both themes | E | ✅ Pass |
 | 20 | Accessibility | Skip link, labelled controls, keyboard search, focus rings, aria-live feedback | B + E | ✅ Pass |
 | 21 | Build | `npm run build` succeeds; `404.html` and `.nojekyll` written; per-module code splitting | B | ✅ Pass |
-| 22 | Deployment | Actions workflow green; live site loads over HTTPS; deep link refresh works; assets load under `/gitmasteracademy/` | CI + B on live URL | pending |
+| 22 | Deployment | Actions workflow green; live site loads over HTTPS; deep link refresh works; assets load under `/gitmasteracademy/` | CI + B on live URL | ✅ Pass |
 
 **Totals (Phase 9 run):** 109 unit tests passed (Vitest) · 39 end-to-end tests passed (Playwright: Chromium desktop + Pixel 7 mobile) · 0 console errors · 0 serious/critical axe violations on 6 pages × 2 themes.
 
