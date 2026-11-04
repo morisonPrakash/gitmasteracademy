@@ -9,6 +9,8 @@ const Roadmap = lazy(() => import('@/features/roadmap/Roadmap'));
 const ModulePage = lazy(() => import('@/features/lesson/ModulePage'));
 const LessonPage = lazy(() => import('@/features/lesson/LessonPage'));
 const Bookmarks = lazy(() => import('@/features/bookmarks/Bookmarks'));
+const TerminalPage = lazy(() => import('@/features/terminal/TerminalPage'));
+const VisualizerPage = lazy(() => import('@/features/visualizer/VisualizerPage'));
 
 export default function App() {
   return (
@@ -21,6 +23,8 @@ export default function App() {
           <Route path="learn/:moduleId" element={<ModulePage />} />
           <Route path="learn/:moduleId/:slug" element={<LessonPage />} />
           <Route path="bookmarks" element={<Bookmarks />} />
+          <Route path="terminal" element={<TerminalPage />} />
+          <Route path="visualizer" element={<VisualizerPage />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

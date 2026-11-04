@@ -30,7 +30,7 @@ export function CodeBlock({ code, lang = 'text', title }: { code: string; lang?:
 }
 
 /** Colour common Git output the way a real terminal does. */
-function colourOutput(out: string) {
+export function colourOutput(out: string) {
   // git status prints staged paths in green and unstaged/untracked/conflicted paths in red.
   let section: 'staged' | 'unstaged' | '' = '';
   return out.split('\n').map((line, i) => {

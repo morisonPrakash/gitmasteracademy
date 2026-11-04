@@ -1,21 +1,21 @@
-// Goals for simulator-based exercises. Each goal inspects the learner's saved
-// terminal session (see src/engine/git/session.ts) and reports whether it is met.
+import { GOALS } from '@/engine/git/goals';
+import { findScenario } from '@/engine/git/scenarios';
+import { session } from '@/engine/git/session';
+
+// Simulator exercises are checked against the learner's saved terminal session.
 
 export interface GoalResult {
   ok: boolean;
   message: string;
 }
 
-type GoalCheck = () => GoalResult;
-
-const goals: Record<string, GoalCheck> = {};
-
-export function registerGoals(more: Record<string, GoalCheck>) {
-  Object.assign(goals, more);
-}
-
-export function checkSimGoal(goal: string): GoalResult {
-  const check = goals[goal];
+export function checkSimGoal(goal: string, scenario: string): GoalResult {
+  const check = GOALS[goal];
   if (!check) return { ok: false, message: `This exercise's check (“${goal}”) is not available.` };
-  return check();
+  const s = session.get();
+  if (s.scenario !== scenario) {
+    const title = findScenario(scenario)?.title ?? scenario;
+    return { ok: false, message: `Your terminal is on a different exercise. Open “${title}” with the link above, complete it, then check again.` };
+  }
+  return check(s.repo);
 }

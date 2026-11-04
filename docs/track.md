@@ -9,7 +9,7 @@ Status key: ⬜ not started · 🟨 in progress · ✅ done and verified
 | 3 | Modules 1–3 content | ✅ | 33 lessons, 36 quiz questions; integrity tests + browser check |
 | 4 | Modules 6, 7, 12, 13 content | ✅ | 34 lessons, 48 quiz questions; integrity tests + browser check |
 | 5 | Modules 4, 5, 8, 9, 10, 11, 14 content | ✅ | 73 lessons, 84 quiz questions; integrity tests incl. annotation line checks |
-| 6 | Git simulation engine, terminal, visualizer | 🟨 | |
+| 6 | Git simulation engine, terminal, visualizer | ✅ | 47 engine tests (every sim exercise answer + every guided scene replayed); browser check desktop + 375px, no console errors |
 | 7 | Exercises, quizzes, final exam, progress | ⬜ | |
 | 8 | Projects, cheat sheet, glossary, resources | ⬜ | |
 | 9 | Full QA pass and fixes | ⬜ | |
@@ -34,6 +34,14 @@ Status key: ⬜ not started · 🟨 in progress · ✅ done and verified
 - All 14 modules written: 140 lessons, 168 module quiz questions, 188 exercises.
 - Integrity test now requires every module; it also checks that each line-by-line YAML annotation points at a real line.
 - 11 exercises use the simulator. Phase 6 must provide these scenarios: `one-commit`, `feature-ahead`, `diverged`, `conflict`, `local-ahead`, `remote-ahead`, `remote-feature`, `dirty-feature`, `bad-commit`; and goals: `feature-login-one-commit`, `main-has-feature`, `merge-commit-on-main`, `conflict-resolved`, `pushed-main`, `pulled-latest`, `on-remote-feature`, `stash-roundtrip`, `reverted-bad-commit`. Simulator also needs a `resolve <file> [ours|theirs|both]` helper (used in Module 8).
+
+### Phase 6
+- Pure TS engine (`src/engine/git`): working directory, index, commits, branches, HEAD/detached HEAD, tags, stash, reflog, remote "server", tracking branches, merge state with conflict markers.
+- ~30 git subcommands with realistic output and a plain-English explanation per command; shell helpers (ls, cat, echo >/>>, touch, rm, edit, resolve, teammate push); `&&` chaining; unsupported commands get a clear "safe simulation" message.
+- 10 scenarios and 9 goal checks; exercises verify against the saved session (`gma:sim`) and the scenario they belong to.
+- Terminal page: exercise picker (Start new exercise), Reset playground, Teammate pushes, history recall, quick chips, explanation panel, live graph, four-area panel.
+- Visualizer page: live SVG graph, guided scenes (lifecycle, merges, rebase, pull request, collaboration), button actions that show the equivalent command.
+- `git log --graph` ASCII layout rewritten to match Git when branches split from merge commits.
 
 ## Open items needing the owner
 - Create an **empty public** GitHub repo `morisonPrakash/gitmasteracademy`.

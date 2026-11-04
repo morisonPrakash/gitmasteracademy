@@ -51,8 +51,8 @@ const LANE = 64;
 const PAD_X = 40;
 const PAD_Y = 68; // room for up to two stacked ref labels above the top lane
 
-export function GraphDiagram({ spec, className = '' }: { spec: GraphSpec; className?: string }) {
-  const labelPad = spec.laneNames ? 92 : 0;
+export function GraphDiagram({ spec, className = '', natural = false }: { spec: GraphSpec; className?: string; natural?: boolean }) {
+  const labelPad = spec.laneNames ? Math.min(190, Math.max(92, ...spec.laneNames.map((n) => n.length * 7 + 16))) : 0;
   const maxCol = Math.max(...spec.nodes.map((n) => n.col));
   const maxLane = Math.max(...spec.nodes.map((n) => n.lane));
   const width = labelPad + PAD_X * 2 + maxCol * COL;
@@ -66,10 +66,11 @@ export function GraphDiagram({ spec, className = '' }: { spec: GraphSpec; classN
   return (
     <svg
       viewBox={`0 0 ${width} ${height}`}
-      className={`h-auto w-full max-w-full ${className}`}
+      className={natural ? className : `h-auto w-full max-w-full ${className}`}
       role="img"
       aria-label={spec.title ?? 'Commit graph'}
-      style={{ maxHeight: `${height * 1.4}px` }}
+      // natural: draw at real pixel size (the parent scrolls) so long histories stay legible
+      style={natural ? { width: `${width}px`, height: `${height}px`, maxWidth: 'none' } : { maxHeight: `${height * 1.4}px` }}
     >
       {spec.laneNames?.map((name, i) => (
         <g key={name}>

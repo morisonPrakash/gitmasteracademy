@@ -54,7 +54,7 @@ export function ExerciseCard({ exercise, index }: { exercise: Exercise; index: n
     else if (c.type === 'choice') finish(choice === c.correct);
     else if (c.type === 'order') finish(order.every((v, i) => v === c.items[i]));
     else {
-      const r = checkSimGoal(c.goal);
+      const r = checkSimGoal(c.goal, c.scenario);
       setSimMsg(r.message);
       finish(r.ok);
     }
