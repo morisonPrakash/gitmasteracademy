@@ -188,7 +188,7 @@ export interface GlossaryTerm {
 export interface ProjectStep {
   title: string;
   role?: string;
-  text: string;
+  text?: string;
   terminal?: TerminalLine[];
   callout?: { kind: CalloutKind; text: string };
 }

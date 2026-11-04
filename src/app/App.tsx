@@ -13,6 +13,11 @@ const TerminalPage = lazy(() => import('@/features/terminal/TerminalPage'));
 const VisualizerPage = lazy(() => import('@/features/visualizer/VisualizerPage'));
 const QuizList = lazy(() => import('@/features/quiz/QuizList'));
 const QuizRunner = lazy(() => import('@/features/quiz/QuizRunner'));
+const ProjectsList = lazy(() => import('@/features/reference/ProjectsPages').then((m) => ({ default: m.ProjectsList })));
+const ProjectPage = lazy(() => import('@/features/reference/ProjectsPages').then((m) => ({ default: m.ProjectPage })));
+const CheatSheetPage = lazy(() => import('@/features/reference/CheatSheetPage'));
+const GlossaryPage = lazy(() => import('@/features/reference/GlossaryPage'));
+const ResourcesPage = lazy(() => import('@/features/reference/ResourcesPage'));
 
 export default function App() {
   return (
@@ -29,6 +34,11 @@ export default function App() {
           <Route path="visualizer" element={<VisualizerPage />} />
           <Route path="quizzes" element={<QuizList />} />
           <Route path="quizzes/:quizId" element={<QuizRunner />} />
+          <Route path="projects" element={<ProjectsList />} />
+          <Route path="projects/:slug" element={<ProjectPage />} />
+          <Route path="cheatsheet" element={<CheatSheetPage />} />
+          <Route path="glossary" element={<GlossaryPage />} />
+          <Route path="resources" element={<ResourcesPage />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

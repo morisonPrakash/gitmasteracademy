@@ -1,4 +1,7 @@
 import { MODULES } from '@/content/catalog';
+import { CHEATSHEET } from '@/content/cheatsheet';
+import { GLOSSARY } from '@/content/glossary';
+import { PROJECTS } from '@/content/projects';
 import { loadAllModules } from '@/content/registry';
 import type { Block } from '@/content/types';
 import { plain } from '@/lib/text';
@@ -62,6 +65,15 @@ const STATIC_PAGES: Omit<SearchDoc, 'body' | 'rawBody'>[] = [
 /** Titles only: available instantly, before any lesson content has loaded. */
 export function shallowIndex(): SearchDoc[] {
   const docs: SearchDoc[] = STATIC_PAGES.map((p) => ({ ...p, body: p.title.toLowerCase(), rawBody: '' }));
+  for (const p of PROJECTS) {
+    docs.push({ id: `project-${p.slug}`, kind: 'page', title: `Project ${p.number}: ${p.title}`, context: 'Practical project', to: `/projects/${p.slug}`, body: `${p.title} ${p.summary} ${p.skills.join(' ')}`.toLowerCase(), rawBody: p.summary });
+  }
+  for (const g of GLOSSARY) {
+    docs.push({ id: `term-${g.term}`, kind: 'page', title: g.term, context: 'Glossary', to: '/glossary', body: `${g.term} ${g.definition}`.toLowerCase(), rawBody: plain(g.definition) });
+  }
+  for (const c of CHEATSHEET) {
+    docs.push({ id: `cheat-${c.id}`, kind: 'page', title: `Cheat sheet: ${c.title}`, context: 'Git Cheat Sheet', to: '/cheatsheet', body: `${c.title} ${c.entries.map((e) => `${e.command} ${e.description}`).join(' ')}`.toLowerCase(), rawBody: c.entries.map((e) => e.command).join(' · ') });
+  }
   for (const m of MODULES) {
     docs.push({
       id: m.id, kind: 'module', title: m.title, context: `Module ${m.number}`, to: `/learn/${m.id}`,
@@ -119,7 +131,7 @@ export function search(docs: SearchDoc[], query: string, limit = 20): SearchHit[
       if (title.includes(t)) score += 10;
       score += Math.min(doc.body.split(t).length - 1, 10);
     }
-    if (doc.kind === 'lesson') score += 2;
+    if (doc.kind === 'lesson') score += 4;
     hits.push({ doc, score, snippet: snippetFor(doc.rawBody, terms[0]) });
   }
   return hits.sort((a, b) => b.score - a.score).slice(0, limit);
